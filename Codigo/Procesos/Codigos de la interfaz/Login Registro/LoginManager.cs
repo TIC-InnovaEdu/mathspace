@@ -9,7 +9,7 @@ public class LoginManager : MonoBehaviour
     public TMP_InputField contrasenaInput;
     public TMP_Text mensajeLoginText;
     public TMP_Text nombreJugadorText; // Para mostrar el nombre del jugador logueado
-    public TMP_Text nombreJugadorText2; // El nuevo TMP_Text donde también mostraremos el nombre
+    public TMP_Text nombreJugadorText2;
     public GameObject botonJugar; // El botón de jugar que se activará después del login
 
     public static string jugadorLogueadoNombre; // Variable estática para el nombre del jugador
@@ -23,7 +23,7 @@ public class LoginManager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(nombreInput.text) || string.IsNullOrEmpty(contrasenaInput.text))
         {
-            mensajeLoginText.text = "❌ Todos los campos deben ser llenados.";
+            mensajeLoginText.text = "Todos los campos deben ser llenados.";
             return;
         }
 
@@ -47,15 +47,15 @@ public class LoginManager : MonoBehaviour
             var response = JsonUtility.FromJson<LoginResponse>(request.downloadHandler.text);
             jugadorLogueadoNombre = response.usuario.nombre; // Guardamos el nombre del jugador logueado
             nombreJugadorText.text = "Bienvenido, " + jugadorLogueadoNombre;
-            nombreJugadorText2.text = "Jugador: " + jugadorLogueadoNombre; // Actualizamos el segundo TMP_Text
-            mensajeLoginText.text = "✅ Login exitoso!";
+            nombreJugadorText2.text = "Jugador: " + jugadorLogueadoNombre; 
+            mensajeLoginText.text = "Login exitoso!";
 
             // Activamos el botón de Jugar
             botonJugar.SetActive(true); 
         }
         else
         {
-            mensajeLoginText.text = "❌ " + request.downloadHandler.text;
+            mensajeLoginText.text = "X" + request.downloadHandler.text;
             botonJugar.SetActive(false); // Desactivamos el botón de Jugar si el login falla
         }
     }
@@ -85,3 +85,5 @@ public class LoginManager : MonoBehaviour
         public string contraseña;
     }
 }
+
+

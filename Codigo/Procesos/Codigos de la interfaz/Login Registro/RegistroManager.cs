@@ -9,9 +9,9 @@ public class RegistroManager : MonoBehaviour
     public TMP_InputField correoInput;
     public TMP_InputField nombreInput;
     public TMP_InputField contrasenaInput;
-    public TMP_Text estadoRegistroText; 
+    public TMP_Text estadoRegistroText; // Para mostrar el estado del registro
 
-    private string serverURL = "http://localhost:3000"; 
+    private string serverURL = "http://localhost:3000"; // Cambia según tu servidor
 
     public void OnRegistroButton()
     {
@@ -47,4 +47,3 @@ public class RegistroManager : MonoBehaviour
         }
     }
 }
-
